@@ -1,0 +1,59 @@
+<div class="cadastro-container">
+  <h1>Cadastro</h1>
+
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="nome" >Nome</label>
+      <input [(ngModel)]="registerDTO.name" type="text" id="nome" name="nome" required #nome="ngModel">
+      <div *ngIf="nome.invalid && nome.touched" class="error">
+        <span *ngIf="nome.errors?.['required']">Nome é obrigatório.</span>
+      </div>
+    </div>
+
+    <!-- Campo Telefone -->
+    <div>
+      <label for="telefone">Telefone</label>
+      <input [(ngModel)]="registerDTO.phone" type="text" id="telefone" name="telefone" required #telefone="ngModel">
+      <div *ngIf="telefone.invalid && telefone.touched" class="error">
+        <span *ngIf="telefone.errors?.['required']">Telefone é obrigatório.</span>
+      </div>
+    </div>
+
+    <!-- Campo Email -->
+    <div>
+      <label for="email">Email</label>
+      <input [(ngModel)]="registerDTO.email" type="email" id="email" name="email" required email #email="ngModel">
+      <div *ngIf="email.invalid && email.touched" class="error">
+        <span *ngIf="email.errors?.['required']">Email é obrigatório.</span>
+        <span *ngIf="email.errors?.['email']">Email inválido.</span>
+      </div>
+    </div>
+
+    <!-- Campo Senha -->
+    <div>
+      <label for="password">Senha</label>
+      <input [(ngModel)]="registerDTO.password" type="password" id="password" name="password" required minlength="8" #password="ngModel">
+      <div *ngIf="password.invalid && password.touched" class="error">
+        <span *ngIf="password.errors?.['required']">Senha é obrigatória.</span>
+        <span *ngIf="password.errors?.['minlength']">A senha deve ter pelo menos 8 caracteres.</span>
+      </div>
+    </div>
+
+    <div>
+      <label for="address">Rua / Endereço</label>
+      <input [(ngModel)]="registerDTO.address" type="text" id="endereco" name="address" required #address="ngModel">
+      <div *ngIf="address.invalid && address.touched" class="error">
+        <span *ngIf="address.errors?.['required']">Endereço é obrigatório.</span>
+      </div>
+    </div>
+    <button type="submit">Cadastrar</button>
+  </form>
+
+  <div *ngIf="errorMessages" class="error-message">{{  errorMessages.email }}</div>
+  <div *ngIf="errorMessages" class="error-message">{{  errorMessages.password }}</div>
+  <div *ngIf="errorMessages" class="error-message">{{  errorMessages.erroRegisterUser }}</div>
+  <div class="links">
+    <a routerLink="/redefinir-senha">Esqueceu sua senha?</a>
+    <a routerLink="/login">login</a>
+  </div>
+</div>
