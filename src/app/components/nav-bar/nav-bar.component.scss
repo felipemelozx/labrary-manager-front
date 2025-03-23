@@ -1,0 +1,52 @@
+// Cores e variáveis para facilitar manutenção
+$primary-color: #4CAF50;
+$secondary-color: #333;
+$error-color: #ff4d4d;
+$border-radius: 8px;
+
+// Barra de navegação
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $primary-color;
+  padding: 1rem 2rem;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  .logo a {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: darken($primary-color, 10%);
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+
+    li {
+      a {
+        color: #fff;
+        font-size: 1rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: darken($primary-color, 10%);
+        }
+
+        &:active {
+          color: darken($primary-color, 15%);
+        }
+      }
+    }
+  }
+}

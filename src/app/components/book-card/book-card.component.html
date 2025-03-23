@@ -1,0 +1,13 @@
+<div class="book-card">
+  <div class="book-cover">
+    <img [src]="book?.coverImage" alt="Capa do Livro" />
+  </div>
+  <h3>{{ book?.title }}</h3>
+  <p><strong>Autor:</strong> {{ book?.authorId }}</p>
+  <p><strong>Editora:</strong> {{ book?.publisher }}</p>
+  <p><strong>Ano de Publicação:</strong> {{ book?.publisherYear }}</p>
+  <p><strong>Categoria:</strong> {{ book?.categoryId }}</p>
+  <p><strong>Copias Disponíveis:</strong> {{ book?.availableCopies }}</p>
+  <p><strong>Total de Cópias:</strong> {{ book?.totalCopies }}</p>
+  <p><strong>Data de Criação:</strong> {{ book?.createdAt }}</p>
+</div>

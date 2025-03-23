@@ -3,15 +3,15 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { loginDTO } from '../../interface/loginDTO';
 import { AuthService } from '../../services/auth.service';
-import { LoginResponse } from '../../interface/LoginResponse'; // Importe a interface LoginResponse
-import { HttpClientModule } from '@angular/common/http'; // Importe o HttpClientModule
-import { RouterModule } from '@angular/router';
+import { LoginResponse } from '../../interface/LoginResponse';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule, HttpClientModule,RouterModule],
-  providers:[AuthService],
+  imports: [FormsModule, CommonModule, HttpClientModule, RouterModule],
+  providers: [AuthService],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -23,7 +23,18 @@ export class LoginComponent {
 
   error: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router // Injetando o Router para redirecionamento
+  ) {}
+  ngOnInit(): void {
+    // Verifica se o token está presente no localStorage
+    if (localStorage.getItem('authToken')) {
+      
+      // Se o token existir, redireciona automaticamente para a home
+      this.router.navigate(['/home']);
+    }
+  }
 
   onSubmit(): void {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -49,6 +60,8 @@ export class LoginComponent {
     this.authService.login(this.loginDto).subscribe(
       (response: LoginResponse) => {
         localStorage.setItem('authToken', response.token);
+
+        this.router.navigate(['/home']);
       },
       (error) => {
         this.error = 'Credenciais inválidas. Tente novamente!';

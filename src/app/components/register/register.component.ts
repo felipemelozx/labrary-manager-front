@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './../../services/auth.service';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { LoginResponse } from '../../interface/LoginResponse';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -16,7 +16,7 @@ import { RegisterDTO } from '../../interface/registerDTO';
 })
 export class RegisterComponent {
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   registerDTO: RegisterDTO = {
     name: '',
@@ -34,6 +34,13 @@ export class RegisterComponent {
   emailRegex: RegExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
   passwordRegex: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&]{8,}$/;
 
+  ngOnInit(): void {
+    // Verifica se o token está presente no localStorage
+    if (localStorage.getItem('authToken')) {
+      // Se o token existir, redireciona automaticamente para a home
+      this.router.navigate(['/home']);
+    }
+  }
 
   onSubmit(): void {
     if (!this.validateEmail()) {

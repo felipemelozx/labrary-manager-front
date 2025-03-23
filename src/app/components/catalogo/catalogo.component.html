@@ -1,0 +1,12 @@
+<div class="search-container">
+  <input
+    type="text"
+    placeholder="Pesquisar por título..."
+    [(ngModel)]="searchQuery"
+    (input)="filterBooks()"
+  />
+</div>
+
+<div class="catalogo-container">
+  <app-book-card *ngFor="let book of filteredBooks" [book]="book"></app-book-card>
+</div>
