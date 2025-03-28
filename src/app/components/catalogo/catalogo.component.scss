@@ -93,4 +93,110 @@
   outline: none;
   border-color: #007bff;
 }
+/* Botão para adicionar livro */
+button {
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 
+  &:hover {
+    background-color: #0056b3;
+  }
+}
+
+/* Formulário de Adição de Livro */
+.add-book-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  margin: 20px auto;
+
+  input,
+  select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  input:focus,
+  select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+
+  /* Estilo para o select */
+  select {
+    appearance: none;
+    background-color: #fff;
+    cursor: pointer;
+    -webkit-appearance: none; /* Para browsers Webkit */
+    -moz-appearance: none; /* Para Firefox */
+  }
+
+  /* Botões no formulário */
+  button {
+    width: 48%;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+
+  /* Botão de cancelar */
+  button:last-of-type {
+    background-color: #dc3545;
+
+    &:hover {
+      background-color: #c82333;
+    }
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .add-book-form {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .add-book-form input,
+  .add-book-form select {
+    font-size: 0.9rem;
+  }
+
+  .add-book-form button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .add-book-form {
+    width: 100%;
+  }
+}
+select option:disabled {
+  color: #999; /* Cor mais suave para o placeholder */
+}

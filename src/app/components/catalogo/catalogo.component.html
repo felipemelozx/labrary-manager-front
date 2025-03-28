@@ -6,6 +6,61 @@
     (input)="filterBooks()"
   />
 </div>
+<!-- Botão para adicionar livro -->
+<button (click)="openAddBookForm()">Adicionar Livro</button>
+
+<!-- Formulário de Adição de Livro (exemplo com todos os campos) -->
+<div *ngIf="isAddBookFormVisible" class="add-book-form">
+  <input
+    type="text"
+    placeholder="Título"
+    [(ngModel)]="newBook.title"
+  />
+  <input
+    type="text"
+    placeholder="Autor ID"
+    [(ngModel)]="newBook.authorId"
+    type="number"
+  />
+  <input
+    type="text"
+    placeholder="Editora"
+    [(ngModel)]="newBook.publisher"
+  />
+  <input
+    type="text"
+    placeholder="Ano de publicação"
+    [(ngModel)]="newBook.publisherYear"
+  />
+  <select [(ngModel)]="newBook.category" placeholder="Categoria">
+    <option disabled selected>Selecione uma categoria</option> <!-- Placeholder -->
+    <option *ngFor="let category of categories" [value]="category.id">
+      {{ category.name }}
+    </option>
+  </select>
+  <input
+    type="number"
+    placeholder="Cópias disponíveis"
+    [(ngModel)]="newBook.availableCopies"
+  />
+  <input
+    type="number"
+    placeholder="Total de cópias"
+    [(ngModel)]="newBook.totalCopies"
+  />
+  <input
+    type="text"
+    placeholder="Data de criação"
+    [(ngModel)]="newBook.createdAt"
+  />
+  <input
+    type="text"
+    placeholder="URL da imagem de capa"
+    [(ngModel)]="newBook.coverImage"
+  />
+  <button (click)="addBook()">Adicionar</button>
+  <button (click)="closeAddBookForm()">Cancelar</button>
+</div>
 
 <div class="catalogo-container">
   <app-book-card *ngFor="let book of filteredBooks" [book]="book"></app-book-card>

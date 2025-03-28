@@ -1,0 +1,53 @@
+.card {
+  width: 100%;
+  max-width: 350px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.card-body {
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+// Estilização do botão "Devolver"
+button {
+  background-color: #4CAF50; /* Cor verde para o botão */
+  color: #fff; /* Cor do texto */
+  border: none;
+  padding: 10px 20px; /* Tamanho do botão */
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Mudança do cursor para indicar que é clicável */
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s; /* Efeito de transição */
+  margin-top: 15px; /* Espaço acima do botão */
+
+  // Efeito de hover - quando o usuário passa o mouse sobre o botão
+  &:hover {
+    background-color: #45a049; /* Cor de fundo mais escura */
+    transform: translateY(-2px); /* Efeito de "elevar" o botão */
+  }
+
+  // Efeito de foco - quando o botão recebe foco
+  &:focus {
+    outline: none; /* Remove a borda padrão de foco */
+    box-shadow: 0 0 0 3px rgba(72, 190, 75, 0.5); /* Adiciona uma borda verde clara */
+  }
+
+  // Efeito de desabilitado - se o botão estiver desabilitado
+  &:disabled {
+    background-color: #ccc; /* Cor de fundo cinza */
+    cursor: not-allowed; /* Cursor de bloqueio */
+  }
+}

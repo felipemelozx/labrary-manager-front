@@ -7,7 +7,24 @@
   <p><strong>Editora:</strong> {{ book?.publisher }}</p>
   <p><strong>Ano de Publicação:</strong> {{ book?.publisherYear }}</p>
   <p><strong>Categoria:</strong> {{ book?.categoryId }}</p>
-  <p><strong>Copias Disponíveis:</strong> {{ book?.availableCopies }}</p>
+  <p><strong>Cópias Disponíveis:</strong> {{ book?.availableCopies }}</p>
   <p><strong>Total de Cópias:</strong> {{ book?.totalCopies }}</p>
   <p><strong>Data de Criação:</strong> {{ book?.createdAt }}</p>
+
+  <!-- Botão de pegar emprestado -->
+  <button [disabled]="!isButtonEnabled" (click)="openModal()">
+    Pegar emprestado
+  </button>
+
+  <!-- Modal -->
+  <div *ngIf="isModalOpen" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>Confirmar Empréstimo</h2>
+      <p>Livro: {{ book?.title }}</p>
+      <p><strong>Email do Usuário:</strong></p>
+      <input type="email" [(ngModel)]="loans.userId" placeholder="Digite seu e-mail" />
+      <button (click)="confirmLoan()">Confirmar Empréstimo</button>
+    </div>
+  </div>
 </div>

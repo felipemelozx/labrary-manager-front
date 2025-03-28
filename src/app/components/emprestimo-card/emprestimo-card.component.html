@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card-header">
+    <h5>Empréstimo de Livro</h5>
+  </div>
+  <div class="card-body">
+    <p><strong>ID:</strong> {{ emprestimo?.id }}</p>
+    <p><strong>ID do Usuário:</strong> {{ emprestimo?.userEmail }}</p>
+    <p><strong>ID do Livro:</strong> {{ emprestimo?.bookId }}</p>
+    <p><strong>Data do Empréstimo:</strong> {{ emprestimo?.loanDate }}</p>
+    <p><strong>Data de Devolução:</strong> {{ emprestimo?.dueDate }}</p>
+    <p><strong>Data de Retorno:</strong> {{ emprestimo?.returnDate ? (emprestimo?.returnDate) : 'Não devolvido ainda' }}</p>
+    <p><strong>Status:</strong> {{ emprestimo?.status }}</p>
+  </div>
+
+  <button
+  (click)="returnBook()"
+  [disabled]="emprestimo?.status !== 'BORROWED'">
+  Devolver
+</button>
+</div>
